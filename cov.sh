@@ -32,9 +32,14 @@ if [ -z "$TARGET" ]; then
     exit 1
 fi
 
+if [ -z "$IGNORE_REGEX" ]; then
+    echo "Error: missing -ignore-regex"
+    exit 1
+fi
+
 TARGET_PATH=$(find ${DERIVED_DATA_PATH} -name "${TARGET}")
 INSTR_PROFILE=$(find ${DERIVED_DATA_PATH} -name "*.profdata")
-IGNORE_FILENAME_REGEX="SourcePackages|Pods|Carthage"
+IGNORE_FILENAME_REGEX="SourcePackages|Pods|Carthage|${IGNORE_REGEX}"
 
 filename=$(basename "$TARGET_PATH")
 COV_BIN="${TARGET_PATH}/${filename%.*}"
