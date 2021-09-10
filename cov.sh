@@ -14,6 +14,9 @@ while :; do
         -format) FORMAT=$2
         shift
         ;;
+        -ignore-regex) IGNORE_REGEX=$2
+        shift
+        ;;
         -output) OUTPUT_FILE=$2
         shift
         ;;
