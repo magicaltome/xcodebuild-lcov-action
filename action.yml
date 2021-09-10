@@ -19,6 +19,10 @@ inputs:
         description: 'The output file format.'
         required: false
         default: 'lcov'
+    ignore-regex:
+        description: 'Add a regex you want to exclude from code coverage'
+        required: true
+        default: ''
 runs:
     using: 'node12'
     main: 'index.js'
