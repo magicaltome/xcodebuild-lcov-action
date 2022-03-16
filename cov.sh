@@ -46,17 +46,16 @@ IGNORE_FILENAME_REGEX="SourcePackages|Pods|Carthage|${IGNORE_REGEX}"
 
 filename=$(basename "$TARGET_PATH")
 COV_BIN="${TARGET_PATH}/${filename%.*}"
-PATH="/usr/local/opt/llvm/bin:$PATH"
 
 mkdir -p $(dirname "$OUTPUT_FILE")
 
-llvm-cov report \
+xcrun llvm-cov report \
     "${COV_BIN}" \
     -instr-profile=$INSTR_PROFILE \
     -ignore-filename-regex=$IGNORE_FILENAME_REGEX \
     -use-color
 
-llvm-cov export \
+xcrun llvm-cov export \
     "${COV_BIN}" \
     -instr-profile=$INSTR_PROFILE \
     -ignore-filename-regex=$IGNORE_FILENAME_REGEX \
